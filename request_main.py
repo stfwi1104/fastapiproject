@@ -20,8 +20,8 @@ featureinput =  { 'age':20,
 
 
 
-response1 = requests.get('https://projectudacity-635f7380dc94.herokuapp.com//')
-response2 = requests.post('https://projectudacity-635f7380dc94.herokuapp.com//prediciton/', data=json.dumps(featureinput))
+response1 = requests.get('https://https://fastapiproject-0125e24518e6.herokuapp.com/')
+response2 = requests.post('https://https://fastapiproject-0125e24518e6.herokuapp.com/prediciton/', data=json.dumps(featureinput))
 
 print(response1.status_code)
 print(response1.json())
