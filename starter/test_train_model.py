@@ -10,7 +10,12 @@ import os
 def data():
     """ Simple function to generate some fake Pandas data."""
    
-    data = pd.read_csv("data/census.csv")
+    path = os.getcwd()
+    parent_path = os.path.abspath(os.path.join(path, os.pardir))
+    data_path = parent_path + "/data/"
+    data_file = "census.csv"
+
+    data = pd.read_csv(data_path +data_file)
  
     return data
 
@@ -28,7 +33,13 @@ def test_column_names(data):
 
 def test_classifier():
     """ If your model is an instance of DeciontreeCLassifier then this is a valid test. """
-    model = pickle.load(open("model/model.pkl",'rb'))
+    
+    path = os.getcwd()
+    parent_path = os.path.abspath(os.path.join(path, os.pardir))
+    model_path = parent_path + "/model/"
+    data_file = "model.pkl"
+    
+    model = pickle.load(open(model_path + data_file,'rb'))
     assert isinstance(model, tree.DecisionTreeClassifier) 
 
 
