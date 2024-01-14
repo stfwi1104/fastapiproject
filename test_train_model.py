@@ -9,27 +9,28 @@ import os
 @pytest.fixture
 def data():
     """ Simple function to generate some fake Pandas data."""
-    '''   
+    '''
     path = os.getcwd()
     parent_path = os.path.abspath(os.path.join(path, os.pardir))
     data_path = parent_path + "/data/"
     data_file = "census.csv"
     '''
-  
+
     data = pd.read_csv("data/census.csv")
- 
+
     return data
 
 
 def test_data_shape(data):
     """ If your data is assumed to have no null values then this is a valid test. """
-    assert data.shape[0] == data.dropna().shape[0], "Dropping null changes shape."
-    
+    assert data.shape[0] == data.dropna(
+    ).shape[0], "Dropping null changes shape."
+
 
 def test_column_names(data):
     """ If your train and test set are assumed to have the same columnnames then this is a valid test. """
     train, test = train_test_split(data, test_size=0.20)
-    assert set(train.columns)==set(test.columns)
+    assert set(train.columns) == set(test.columns)
 
 
 def test_classifier():
@@ -40,11 +41,11 @@ def test_classifier():
     model_path = parent_path + "/model/"
     data_file = "model.pkl"
     '''
-  
-    model = pickle.load(open("model/model.pkl",'rb'))
-    assert isinstance(model, tree.DecisionTreeClassifier) 
+
+    model = pickle.load(open("model/model.pkl", 'rb'))
+    assert isinstance(model, tree.DecisionTreeClassifier)
 
 
 def test():
     """ If your model is an instance of DeciontreeCLassifier then this is a valid test. """
-    assert 5==5
+    assert 5 == 5
